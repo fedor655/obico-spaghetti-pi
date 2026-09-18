@@ -1,0 +1,13 @@
+diff --git a/backend/config/settings.py b/backend/config/settings.py
+index 3cd6228c..3c2bcd7b 100644
+--- a/backend/config/settings.py
++++ b/backend/config/settings.py
+@@ -482,7 +482,7 @@ FD_1ST_GEN_PARAMS = {
+     'THRESHOLD_HIGH': 0.78,            # Above this = definitely failing (0.8 - 0.02 baseline)
+     'INIT_SAFE_FRAME_NUM': 30,         # Frames at print start considered "safe"
+     'ROLLING_MEAN_SHORT_MULTIPLE': 3.8,  # Failing if ewm > short_mean * this
+-    'ESCALATING_FACTOR': 1.75,         # Factor to escalate warning to pause
++    'ESCALATING_FACTOR': 1.0,         # Factor to escalate warning to pause
+     'VISUALIZATION_THRESH': 0.2,       # Threshold for drawing detection boxes
+ }
+ 

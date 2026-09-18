@@ -1,0 +1,5 @@
+services:
+  ml_api:
+    cpus: 2.8
+  web:
+    cpus: 2.8

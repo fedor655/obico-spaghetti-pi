@@ -1,0 +1,21 @@
+[server]
+url = http://127.0.0.1:3334
+auth_token = <YOUR_OBICO_LINK_TOKEN>
+
+[moonraker]
+host = 127.0.0.1
+port = 7125
+
+[webcam]
+snapshot_url = http://127.0.0.1:8080/?action=snapshot
+stream_url = http://127.0.0.1:8080/?action=stream
+disable_video_streaming = False
+
+[logging]
+path = /home/pi/printer_data/logs/moonraker-obico.log
+
+[tunnel]
+
+
+[misc]
+sentry_opt: in

@@ -1,0 +1,13 @@
+diff --git a/backend/lib/fs_file_storage.py b/backend/lib/fs_file_storage.py
+index d41ae75c..54658299 100644
+--- a/backend/lib/fs_file_storage.py
++++ b/backend/lib/fs_file_storage.py
+@@ -17,7 +17,7 @@ def save_file_obj(dest_path, file_obj, container, syndicate_name, content_type):
+ 
+     uri = '{}{}/{}'.format(settings.MEDIA_URL, container, dest_path)
+     internal_url = new_signed_url(settings.INTERNAL_MEDIA_HOST + uri)
+-    external_url = new_signed_url(syndicate.build_full_url_for_syndicate(uri, syndicate_name))
++    external_url = new_signed_url(uri)  # PATCH: relative URL -> browser resolves against current host (IP-change proof)
+     return internal_url, external_url
+ 
+ def list_dir(dir_path, container):
