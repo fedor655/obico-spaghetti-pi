@@ -1,3 +1,7 @@
+# Sample ~/printer_data/config/moonraker-obico.cfg for a local Obico server.
+# The real file is written by moonraker-obico's install.sh when you link the printer.
+# Never commit your own auth_token.
+
 [server]
 url = http://127.0.0.1:3334
 auth_token = <YOUR_OBICO_LINK_TOKEN>
@@ -15,7 +19,6 @@ disable_video_streaming = False
 path = /home/pi/printer_data/logs/moonraker-obico.log
 
 [tunnel]
-
 
 [misc]
 sentry_opt: in
