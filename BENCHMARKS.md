@@ -4,7 +4,7 @@ Real numbers from a running install, not estimates. Reproduce them with
 `scripts/bench.sh`.
 
 **Hardware and conditions.** Raspberry Pi 4 Model B Rev 1.2, 4 GB RAM, Debian 12 bookworm
-(aarch64), root on a USB SSD, passive cooling. Measured on a live system with 11 days of
+(aarch64), root on a USB SSD, **active cooling (fan)**. Measured on a live system with 11 days of
 uptime: the full Obico stack, Klipper, Moonraker, mjpg_streamer, ffmpeg and janus were all
 running, plus a desktop session with VNC. These are working-printer conditions, not a
 clean-room benchmark.
@@ -70,7 +70,7 @@ detection — roughly a quarter to a third of the machine.
 | Clock | 1500 MHz, no downclocking |
 | `vcgencmd get_throttled` | `0x0` — never throttled |
 
-Passive cooling is sufficient. Accumulated CPU time over 11 days shows the steady
+These temperatures are with a fan. Do not read them as a case for passive cooling — a bare or heatsink-only Pi 4 running this workload will sit much hotter and is likely to throttle, which on a 15 s inference makes it slower still. Accumulated CPU time over 11 days shows the steady
 background cost: xray 147 min, moonraker 113 min, ffmpeg 72 min, redis 73 min.
 
 The `cpus: 2.8` cap in `docker-compose.override.yml` matters here. Without it, detection

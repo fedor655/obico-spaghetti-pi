@@ -48,7 +48,7 @@ Full measurements are in [BENCHMARKS.md](BENCHMARKS.md); reproduce them with
 | Detection latency, 640×480 | **15.5 s median** (min 14.7, p95 27.9) — about one frame every 15 s |
 | RAM, whole stack | ~1.2 GB of 3.7 GB; swap never touched |
 | CPU | load 1.43 of 4 cores under detection |
-| Temperature | 40 °C idle, 48 °C detecting, never throttled |
+| Temperature | 40 °C idle, 48 °C detecting, never throttled — **with a fan** |
 | Disk for images | 9.1 GB of containerd layers |
 | First build | 40–90 minutes |
 
@@ -63,6 +63,9 @@ in knowing that, and knowing the Pi works hard for the whole length of every pri
   celery + redis sit at roughly 1.2 GB steady-state.
 - **10+ GB of free disk.** The containerd layers for these images come to about 9 GB.
 - A 64-bit OS (`uname -m` must report `aarch64`) and Docker with compose v2.
+- **Active cooling.** Detection keeps the CPU busy for the whole length of every print.
+  The temperatures reported in BENCHMARKS.md were measured with a fan fitted; a bare or
+  heatsink-only Pi 4 is likely to throttle under this load.
 - A working Klipper + Moonraker setup (standard `printer_data` layout).
 - A USB camera serving MJPEG at `http://127.0.0.1:8080/?action=stream`.
 
