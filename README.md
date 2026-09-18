@@ -37,6 +37,26 @@ are fetched during the image build:
 - ONNX (used on arm64): `model-weights-5a6b1be1fa.onnx`
 - Darknet: `model-weights-ef79dacfd0051ab526f3002d5f5f9912.darknet`
 
+## Does it actually perform on a Pi 4?
+
+Short answer: it works, but detection is slow and disk is the binding constraint.
+Full measurements are in [BENCHMARKS.md](BENCHMARKS.md); reproduce them with
+`scripts/bench.sh`.
+
+| Metric | Measured |
+|---|---|
+| Detection latency, 640×480 | **15.5 s median** (min 14.7, p95 27.9) — about one frame every 15 s |
+| RAM, whole stack | ~1.2 GB of 3.7 GB; swap never touched |
+| CPU | load 1.43 of 4 cores under detection |
+| Temperature | 40 °C idle, 48 °C detecting, never throttled |
+| Disk for images | 9.1 GB of containerd layers |
+| First build | 40–90 minutes |
+
+Fifteen seconds per frame is not real-time, and Obico's own guidance is that the server is
+not meant for a Raspberry Pi. It is still useful here because spaghetti develops over
+minutes: a 15-second interval catches a failing print long before it turns into a blob. Go
+in knowing that, and knowing the Pi works hard for the whole length of every print.
+
 ## Requirements
 
 - Raspberry Pi 4 with **4 GB** of RAM. The stack will not fit in 2 GB: web + ml_api +
